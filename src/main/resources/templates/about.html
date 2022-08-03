@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Registration-User</title>
+<link
+	href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css"
+	rel="stylesheet"
+	integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor"
+	crossorigin="anonymous">
+
+<link rel="stylesheet"
+	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<style>
+.menu {
+	width: 100%;
+	margin-left: 0px;
+}
+
+body {
+	background-image: linear-gradient(380deg, black, indigo);
+	background-repeat: no-repeat;
+	background-size: 2100px 1500px;
+}
+
+li {
+	text-decoration: none;
+	display: inline-block;
+}
+
+a {
+	color: white;
+}
+
+a:hover {
+	color: orange;
+}
+
+img {
+	height: 50px;
+	width: 60px;
+}
+
+ul, li, a {
+	font-size: 22px;
+}
+
+h1 {
+	font-size: 80px;
+	margin-top: 5%;
+}
+
+
+p {
+	font-size: 25px;
+}
+.container{
+	border-radius:40px;
+}
+</style>
+</head>
+<body>
+	<div>
+		<nav class="navbar navbar-expand-lg navbar-light bg-info">
+			<div class="container-fluid">
+				<a class="navbar-brand" href="#"><img class="icon" alt="image"
+					src="/img/brand.png"> </a>
+
+				<button class="navbar-toggler" type="button"
+					data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+					aria-controls="navbarSupportedContent" aria-expanded="false"
+					aria-label="Toggle navigation">
+					<span class="navbar-toggler-icon"></span>
+				</button>
+
+				<div class="collapse navbar-collapse" id="navbarSupportedContent">
+					<ul class="navbar-nav me-auto mb-2 mb-lg-0">
+						<li class="nav-item"><a class="nav-link active"
+							aria-current="page" th:href="@{/}">Home</a></li>
+						<li class="nav-item"><a class="nav-link" th:href="@{/signin}">Login</a></li>
+						<li class="nav-item"><a class="nav-link"
+							th:href="@{/signup}">Register</a></li>
+						<li class="nav-item dropdown"><a
+							class="nav-link dropdown-toggle" href="#" id="navbarDropdown"
+							role="button" data-bs-toggle="dropdown" aria-expanded="false">
+								Menu </a>
+							<ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+								<li><a class="dropdown-item" href="#">FAQ</a></li>
+								<li><hr class="dropdown-divider"></li>
+								<li><a class="dropdown-item" href="#">Feedback</a></li>
+								<li><hr class="dropdown-divider"></li>
+								<li><a class="dropdown-item" href="#">Content</a></li>
+							</ul></li>
+						<li class="nav-item"><a class="nav-link" th:href="@{/about}">About</a></li>
+					</ul>
+					<form class="d-flex">
+						<input class="form-control me-2" type="search"
+							placeholder="Search" aria-label="Search">
+						<button class="btn btn-outline-success" type="submit">Search</button>
+					</form>
+				</div>
+			</div>
+		</nav>
+	</div>
+	<div class="container bg-dark text-white">
+		<div class=" text-light content-center m-5 ">
+		<br>
+			<h1>About</h1>
+			<hr><br>
+			<p>Bharat Broadband Network Limited is a Special Purpose Vehicle
+				set up under Companies Act by Government of India with an authorized
+				capital of Rs. 1000 Cr. It has been mandated to create the National
+				Optical Fiber Network (NOFN) in India.</p><br><br>
+
+			<p>A total of around 2,50,000 Gram Panchayats spread over 6,600
+				Blocks and 641 Districts are to be covered by laying incremental
+				fiber. The timeline for this ambitious project is two years. The
+				project cost is estimated to be about 20,000 Cr which will be funded
+				by the USO fund.</p><br><br><br><br>
+		</div>
+
+
+	</div>
+
+	<script
+		src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js"
+		integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2"
+		crossorigin="anonymous"></script>
+</body>
+</html>

@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="ISO-8859-1">
+<title>Create New Service Provider</title>
+<!-- Latest compiled and minified CSS -->
+<!-- CSS only -->
+<link
+	href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css"
+	rel="stylesheet"
+	integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx"
+	crossorigin="anonymous">
+	
+	
+<!-- JavaScript Bundle with Popper -->
+<script
+	src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js"
+	integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa"
+	crossorigin="anonymous"></script>
+<link rel="stylesheet" type="text/css" href="/css/addser.css">
+
+</head>
+<body>
+<!-- As a heading -->
+<nav class="navbar bg-primary navbar-custom">
+  <div class="container-fluid">
+    <span class="navbar-brand mb-5 h1 text-white s1">Registration Form</span>
+  </div>
+</nav>
+	<div class="container-fluid cc cc2">
+		
+		<h5 class="#6610f2 fw-semibold">Service Provider Details</h5>
+		<br />
+		<form class="row g-3" action="#" th:action="@{/user/serviceprovider/save}"
+			th:object="${serviceProvider}" method="post" enctype="multipart/form-data">
+			<div class="col-md-6">
+				<label for="serviceProviderName" class="form-label fw-bold"> Name of
+					the Service Provider<span class="red">*</span></label> <input type="text"
+					placeholder="Name of the Service Provider" class="form-control"
+					id="serviceProviderName" th:field="*{spName}">
+			</div>
+			<div class="col-md-6">
+				<label for="serviceProviderName" class="form-label fw-bold"> Type of
+					Service Provider<span class="red">*</span></label>
+					<select class="form-select"
+					aria-label="Default select example" name="stype"
+					id="serviceProviderName" th:field="*{serviceType}">
+					<option disabled="disabled" value="0">--select--</option>
+					<option th:each="serType : ${listServiceType}"
+						th:value="${serType.serviceId}"
+						th:text="${serType.serviceNname}"></option>
+
+				</select>
+			</div>
+
+			<div class="col-md-4">
+				<label for="aSignatory" class="form-label fw-bold c1">Name of Authorized Signatory<span class="red">*</span></label> <input
+					type="text" class="form-control" id="aSignatory" th:field="*{authorizedSignatory}"
+					placeholder="Name of Authorized Signatory">
+			</div>
+			<div class="col-md-4">
+				<label for="aadharOfSignatory" class="form-label fw-bold">Aadhar Number of Authorized Signatory<span class="red">*</span></label> <input
+					type="text" class="form-control" id="aadharOfSignatory" th:field="*{signatoryAadharNo}"
+					placeholder="Name of Authorized Signatory">
+			</div>
+			<div class="col-md-4">
+				<label for="pan" class="form-label fw-bold">PAN<span class="red">*</span></label> <input
+					type="text" class="form-control" id="pan" th:field="*{pan}"
+					placeholder="PAN">
+			</div>
+			
+			
+			<div class="col-md-4">
+				<label for="licenceNo" class="form-label fw-bold">Authorized Licence No</label> <input
+					type="text" class="form-control" id="licenceNo" th:field="*{licenseNo}"
+					placeholder="Authorized Licence Number">
+			</div>
+			<div class="col-md-4">
+				<label for="tan" class="form-label fw-bold">TAN</label> <input
+					type="text" class="form-control" id="tan" th:field="*{tan}"
+					placeholder="TAN">
+			</div>
+			<div class="col-md-4">
+				<label for="gst" class="form-label fw-bold">GSTIN/UTS NO.</label> <input
+					type="text" class="form-control" id="gst" th:field="*{gst}"
+					placeholder="GSTIN">
+			</div>
+			
+					
+				<div class="container-fluid cc1 row g-3">
+				<h5 class="#6610f2 fw-semibold">Upload File</h5>
+				<br />
+					
+				<div class="col-md-4 ">
+				<label class="form-label fw-bold">PAN</label></br>
+				<label for="panDoc" button type="file" class="btn  btn-primary">Upload</button> </label>
+				 <input type="file" name="panDocs" id="panDoc" style="visibility:hidden;">
+				 
+			</div>
+			<div class="col-md-4">
+				<label class="form-label fw-bold">Aadhar</label></br>
+				<label for="aadharDoc" button type="file" class="btn  btn-primary">Upload</button> </label>
+				 <input type="file" id="aadharDoc" name="aadharDocs" style="visibility:hidden;">
+			</div>
+			<div class="col-md-4">
+				<label class="form-label fw-bold">License</label></br>
+				<label for="licenseDoc" button type="file" class="btn  btn-primary">Upload</button> </label>
+				 <input type="file" id="licenseDoc" name="licenseDocs" style="visibility:hidden;">
+			</div>
+			
+			<div class="col-md-4">
+				<label class="form-label fw-bold">GSTIN</label></br>
+				<label for="gstinDoc" button type="file" class="btn  btn-primary">Upload</button> </label>
+				 <input type="file" id="gstinDoc" name="gstinDocs" style="visibility:hidden;">
+			</div>
+			
+			<div class="col-md-4">
+				<label class="form-label fw-bold">Company Incorporation Certificate</label></br>
+				<label for="cicDoc" button type="file" class="btn  btn-primary">Upload</button> </label>
+				 <input type="file" id="cicDoc" name="cicDocs" style="visibility:hidden;">
+			</div>
+				
+				</div>	
+				
+				<div class="container-fluid cc2 row g-3">
+				<div>
+				<h5 class="#6610f2 fw-semibold">Desired Service Location as BBNL</h5>
+				</div>
+				
+				<div class="col-md-6">
+				<label for="isrequired" class="form-label fw-bold">Whether Internet Leased Line(ILL) required From BBNL</label>
+				<select class="form-select" name="isrequired" id="isrequired" aria-label="Default select example" th:field="*{illRequired}">
+   				<option disabled="disabled" value="false">--select--</option>
+  				<option value="true">YES</option>
+  				<option value="false">NO</option>
+ 				
+				</select>
+				
+				
+				</div>
+				
+				<div class="row g-3">
+			<div class="col-md-4">
+				<label class="form-label fw-bold">State<span class="red">*</span></label>
+				<select class="form-select" th:field="*{ServiceState}">
+						 <option th:each="liststate : ${liststate}"
+						 	th:value="${liststate.stateId}"
+                            th:text="${liststate.stateName}">
+                         </option>
+					</select>
+			</div>
+			<div class="col-md-4">
+				<label  class="form-label fw-bold">District<span class="red">*</span></label>
+					<select class="form-select" th:field="*{serviceDistrict}">
+						<option th:each="listDistrict : ${listDistrict}"
+						 	th:value="${listDistrict.districtId}"
+                            th:text="${listDistrict.districtName}">
+                	    </option>
+					</select>
+			</div>
+			<div class="col-md-4">
+				<label  class="form-label fw-bold">Block<span class="red">*</span></label> 
+				<select class="form-select" th:field="*{serviceBlock}">
+						 <option th:each="listBlock : ${listBlock}"
+						 	th:value="${listBlock.blockId}"
+                            th:text="${listBlock.blockName}">
+                         </option>
+					</select>
+			</div>
+			</div>
+					
+					
+					<div class="container-fluid cc3 row g-3">
+				<div>
+				<h5 class="#6610f2 fw-semibold">Basic Details</h5>
+				</div>
+				<div class="row g-3">
+				<div class="col-md-6">
+				<label for="addressLine1" class="form-label fw-bold c1">Address Line 1<span class="red">*</span></label> <input
+					type="text" class="form-control" id="addressLine1" th:field="*{addressLine1}"
+					placeholder="Company Address 1">
+			</div>
+			<div class="col-md-6">
+				<label for="addressLine2" class="form-label fw-bold c1">Address Line 2<span class="red">*</span></label> <input
+					type="text" class="form-control" id="addressLine2" th:field="*{addressLine2}"
+					placeholder="Company Address 2">
+			</div>
+			<div class="col-md-6">
+				<label class="form-label fw-bold">State<span class="red">*</span></label>
+				<select class="form-select" th:field="*{State}">
+						 <option th:each="liststate : ${liststate}"
+						 	th:value="${liststate.stateId}"
+                            th:text="${liststate.stateName}">
+                         </option>
+					</select>
+			</div>
+			<div class="col-md-6">
+				<label  class="form-label fw-bold">District<span class="red">*</span></label>
+					<select class="form-select" th:field="*{District}">
+						<option th:each="listDistrict : ${listDistrict}"
+						 	th:value="${listDistrict.districtId}"
+                            th:text="${listDistrict.districtName}">
+                	    </option>
+					</select>
+			</div>
+			<div class="col-md-6">
+				<label for="emailAddress" class="form-label fw-bold c1">Email Address<span class="red">*</span></label> <input
+					type="text" class="form-control" id="emailAddress" th:field="*{emailId}"
+					placeholder="Email Address">
+			</div>
+			<div class="col-md-6">
+				<label for="mobileNo" class="form-label fw-bold c1">Mobile Number<span class="red">*</span></label> <input
+					type="text" class="form-control" id="mobileNo" th:field="*{mobileNo}"
+					placeholder="Mobile Number">
+			</div>
+			</div>
+				
+				<div>
+						<button type="submit" class="btn btn-primary m-2">Save</button>
+						<input type="reset" class="btn btn-primary m-2">
+					</div>
+				</div>
+					
+		</form>
+		</div>
+	
+ <footer>
+ 
+ <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+ 
+ </footer>
+</body>
+</html>

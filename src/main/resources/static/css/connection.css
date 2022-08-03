@@ -1,0 +1,17 @@
+body
+{
+  margin:0px;
+  padding:0px;
+	font-family: "Open Sans", arial;
+	background:linear-gradient(rgba(0, 0, 0, .8), rgba(0, 0, 0, .8)),url(../img/connections_bg.jpg);
+	color:#fff;
+	font-weight:300;
+}
+
+table, th, td {
+  border: 1px solid red;
+}
+
+tbody {
+    background-color: #e4f0f5;
+}
