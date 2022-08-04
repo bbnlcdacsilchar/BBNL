@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+	 xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+<head>
+<meta charset="ISO-8859-1">
+<title>View-Page</title>
+<link rel="stylesheet"
+	href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css"
+	integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+	crossorigin="anonymous">
+
+<link rel="stylesheet"
+	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<style>
+button a {
+	text-decoration: none;
+	color: whitesmoke;
+}
+
+body {
+	background-image: linear-gradient(380deg, black, indigo);
+}
+
+label {
+	color: whitesmoke;
+}
+
+img {
+	height: 50px;
+	width: 60px;
+}
+
+ul, li, a {
+	font-size: 22px;
+}
+</style>
+</head>
+<body>
+	
+	<div class="container-fluid">
+		<div class="row">
+			<div class="col-md-12">
+				<h1 class="text-center text-light mt-3">ALL USER LIST</h1>
+				<hr class="bg-light">
+				<div th:if="${param.success}">
+					<div class="alert alert-success text-center mt-3">You have
+						Successfully Updated</div>
+				</div>
+				<a th:href="@{/logout}" class="btn btn-success float-right mb-2">Logout</a>
+				
+				
+				<a th:href="@{/export_crf_excel}" class="btn btn-success mb-2 mr-1">Export-Data-CRF-Excel</a>
+				<marquee class="text-lg text-uppercase text-light">
+					<strong><b>-----------------: The List of User
+							:-----------------</b></strong>
+				</marquee>
+
+				
+						<table class="table table-striped table-hover table-responsive ">
+							<thead class="thead-dark">
+								<tr>
+									<th>CRF_ID</th>
+									<th>ApplicantName</th>
+									<th>ApplicantAddress</th>
+									<th>ApplicantPan</th>
+									<th>BandwidthRequired</th>
+									<th>PortCapacityRequired</th>
+									<th>LegalStatus</th>
+									<th>GeneralInformation</th>
+									<th>State</th>
+									<th>District</th>
+									<th>Block</th>
+									<th>GramPanchayat</th>
+									<th>ApplicationDate</th>
+									<th>BillingAddress</th>
+									
+									
+									
+									
+									<th>Edit</th>
+									<th>Delete</th>
+
+								</tr>
+							</thead>
+
+							<tbody>
+								<tr th:each="user : ${users}" class="text-light">
+									<td th:text="${user.crfId}"></td>
+									<td th:text="${user.applicantName}"></td>
+									<td th:text="${user.applicantAddress}"></td>
+									<td th:text="${user.applicantPan}"></td>
+									<td th:text="${user.bandwidthRequired}"></td>
+									<td th:text="${user.portCapacityRequired}"></td>
+									<td th:text="${user.legalStatus}"></td>
+									<td th:text="${user.generalInformation}"></td>
+									<td th:text="${user.state}"></td>
+									<td th:text="${user.district}"></td>
+									<td th:text="${user.block}"></td>
+									<td th:text="${user.gp}"></td>
+									<td th:text="${user.application_date}"></td>
+									<td th:text="${user.billingAddress}"></td>
+									
+									
+									
+									
+
+
+
+									<td><a class="btn btn-primary btn-sm"
+										th:href="@{/edit/{crfId}(crfId=${user.crfId})}"><i
+											class="fa fa-pencil fa-fw h3"></i>Edit</a></td>
+									<td><a class="btn btn-danger btn-sm"
+										th:href="@{/delete/{crfId}(crfId=${user.crfId})}"><i
+											class="fa fa-trash h3 " aria-hidden="true"></i>Delete</a></td>
+								</tr>
+
+							</tbody>
+
+						</table>
+					
+					<p>
+						<a class="btn btn-info" th:href="@{/signup}">Add New
+							User</a>
+							<a class="btn btn-info float-right" th:href="@{/upload_excel}" >Upload Bulk Data</a>
+							
+					</p>
+					
+					
+				
+
+				<marquee class="text-lg text-uppercase text-light">
+					<strong><b>-----------------: The List of User
+							:-----------------</b></strong>
+				</marquee>
+
+			</div>
+
+		</div>
+
+	</div>
+
+</body>
+</html>
