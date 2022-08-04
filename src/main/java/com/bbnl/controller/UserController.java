@@ -43,7 +43,7 @@ public class UserController {
 	@Autowired
 	PasswordResetTokenRepository passwordTokenRepository;
 	
-	
+	@Autowired
 	private UserService service;
 	
 	
@@ -64,7 +64,7 @@ public class UserController {
 	@Autowired
     private JavaMailSender mailSender;
 	
-	 @Autowired
+	@Autowired
 	private Environment env;
 	
 	@GetMapping("/")
