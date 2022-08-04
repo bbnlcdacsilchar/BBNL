@@ -8,7 +8,7 @@
 </head>
 <body>
 	<section class="text-center mt-1">
-		<h1>Welcome, <span sec:authentication="principal.username"></span></h1>
+		<h1>Welcome, <span th:text="${user.firstName+' '+user.lastName}"></span></h1>
 		<h3 > <a class="btn btn-primary" th:href="@{/user/connection}">Connection details</a> </h3>
 		<br /> <a class="btn btn-primary" th:href="@{/user/ServiceProviderList}">Show Service Provider List</a>
 	<br />
