@@ -73,8 +73,8 @@ public class ServiceProviderController {
 		
 		  List<ServiceType> listServiceType = servicetype.listAllService();
 		  model.addAttribute("listServiceType", listServiceType);
-		  model.addAttribute("ServiceType", new ServiceType()); ServiceProvider
-		  serviceProvider = new ServiceProvider();
+		  model.addAttribute("ServiceType", new ServiceType()); 
+		  ServiceProvider serviceProvider = new ServiceProvider();
 		  model.addAttribute("serviceProvider", serviceProvider);
 		  List<State> liststate = stateService.listAllState();
 			model.addAttribute("liststate", liststate);
@@ -143,10 +143,14 @@ public class ServiceProviderController {
 		@RequestMapping("ServiceProviderList/edit/{id}")
 		public ModelAndView editConn(@PathVariable(name = "id") long id,Model model) {
 			
-			
+			List<ServiceType> listServiceType = servicetype.listAllService();
+			  model.addAttribute("listServiceType", listServiceType);
+			  model.addAttribute("ServiceType", new ServiceType()); 
+			  ServiceProvider serviceProvider = new ServiceProvider();
+			  model.addAttribute("serviceProvider", serviceProvider);
 			
 			ModelAndView editView = new ModelAndView("editServiceProviderForm");
-			ServiceProvider serviceProvider = service.get(id);
+			ServiceProvider servicePro = service.get(id);
 			
 			List<State> liststate = stateService.listAllState();
 			model.addAttribute("liststate", liststate);
@@ -158,7 +162,7 @@ public class ServiceProviderController {
 			model.addAttribute("listBlock", listBlock);
 			
 			
-			editView.addObject("serviceProvider", serviceProvider);		
+			editView.addObject("serviceProvider", servicePro);		
 			return editView;
 		}
 	

@@ -33,6 +33,7 @@
 		<br />
 		<form class="row g-3" action="#" th:action="@{/user/serviceprovider/save}"
 			th:object="${serviceProvider}" method="post" enctype="multipart/form-data">
+			<input type="hidden" th:field="*{spId}">
 			<div class="col-md-6">
 				<label for="serviceProviderName" class="form-label fw-bold"> Name of
 					the Service Provider<span class="red">*</span></label> <input type="text"
