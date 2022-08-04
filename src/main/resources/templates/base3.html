@@ -1,5 +1,7 @@
 <!doctype html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org" th:fragment="layout(content)">
+<html lang="en" xmlns:th="http://www.thymeleaf.org" 
+				xmlns:sec="http://www.thymeleaf.org"
+				th:fragment="layout(content)">
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -21,7 +23,7 @@
 	        <a class="nav-link text-white ml-3" href="#" th:href="@{/}">Home</a>
 	      </li>
 	      <li class="nav-item">
-	        <a class="nav-link text-white ml-3" href="/user"><span th:text="${user.firstName+' '+user.lastName}"></span></a>
+	        <a class="nav-link text-white ml-3" href="/user"><span sec:authentication="principal.username"></span></a>
 	      </li>
 	      <li class="nav-item">
 	        <a class="nav-link text-white ml-3" href="#" th:href="@{/logout}">Logout</a>
