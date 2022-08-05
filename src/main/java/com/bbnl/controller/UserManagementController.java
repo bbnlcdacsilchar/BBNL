@@ -10,12 +10,15 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
+import com.bbnl.entity.CustomerRequestForm;
 import com.bbnl.entity.User;
 import com.bbnl.service.UserService;
 
 
 @Controller
 public class UserManagementController {
+	
+	
 	
 	UserService service;
 	
@@ -55,5 +58,11 @@ public class UserManagementController {
 	     model.addAttribute("users", user);
 	     return "userlist";
 	}
+	
+//===================================================================================================================
+	
+	
+	
+	
 
 }

@@ -50,11 +50,8 @@ ul, li, a {
 				
 				<a th:href="@{/export_excel}" class="btn btn-success mb-2 mr-1">Export-Data-User-Excel</a>
 				
-				
-				<a th:href="@{/export_crf_excel}" class="btn btn-success float-right mb-2 mr-1">Export-Data-CRF-Excel</a>
 				<marquee class="text-lg text-uppercase text-light">
-					<strong><b>-----------------: The List of User
-							:-----------------</b></strong>
+					<strong><b>-----------------: The List of User	:-----------------</b></strong>
 				</marquee>
 
 				<div th:switch="${users}">
@@ -63,6 +60,7 @@ ul, li, a {
 						<table class="table table-striped table-hover table-responsive ">
 							<thead class="thead-dark">
 								<tr>
+									<th>UserId</th>
 									<th>FirstName</th>
 									<th>MiddleName</th>
 									<th>LastName</th>
@@ -89,6 +87,7 @@ ul, li, a {
 
 							<tbody>
 								<tr th:each="user : ${users}" class="text-light">
+									<td th:text="${user.userId}"></td>
 									<td th:text="${user.firstName}"></td>
 									<td th:text="${user.middleName}"></td>
 									<td th:text="${user.lastName}"></td>

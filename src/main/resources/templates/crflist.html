@@ -40,7 +40,7 @@ ul, li, a {
 	<div class="container-fluid">
 		<div class="row">
 			<div class="col-md-12">
-				<h1 class="text-center text-light mt-3">ALL USER LIST</h1>
+				<h1 class="text-center text-light mt-3">ALL CRF LIST</h1>
 				<hr class="bg-light">
 				<div th:if="${param.success}">
 					<div class="alert alert-success text-center mt-3">You have
@@ -51,7 +51,7 @@ ul, li, a {
 				
 				<a th:href="@{/export_crf_excel}" class="btn btn-success mb-2 mr-1">Export-Data-CRF-Excel</a>
 				<marquee class="text-lg text-uppercase text-light">
-					<strong><b>-----------------: The List of User
+					<strong><b>-----------------: The List of Customer Request
 							:-----------------</b></strong>
 				</marquee>
 
@@ -65,17 +65,29 @@ ul, li, a {
 									<th>ApplicantPan</th>
 									<th>BandwidthRequired</th>
 									<th>PortCapacityRequired</th>
-									<th>LegalStatus</th>
-									<th>GeneralInformation</th>
+									<th>LegalStatus</th>									
 									<th>State</th>
 									<th>District</th>
 									<th>Block</th>
 									<th>GramPanchayat</th>
-									<th>ApplicationDate</th>
+									<th>ApplicationDate</th>									
+									<th>BlockContactName</th>
+									<th>BlockContactEmail</th>
+									<th>BlockContactMobile</th>
+									<th>BlockContactAddress</th>
+									<th>BlockContactDesignation</th>
+									<th>gpContactName</th>
+									<th>gpContactEmail</th>
+									<th>gpContactMobile</th>
+									<th>gpContactAddress</th>
+									<th>gpContactDesignation</th>
+									<th>ContactName</th>
+									<th>ContactEmail</th>
+									<th>ContactMobile</th>
+									<th>ContactAddress</th>
 									<th>BillingAddress</th>
-									
-									
-									
+									<th>GeneralInformation</th>
+								
 									
 									<th>Edit</th>
 									<th>Delete</th>
@@ -92,25 +104,35 @@ ul, li, a {
 									<td th:text="${user.bandwidthRequired}"></td>
 									<td th:text="${user.portCapacityRequired}"></td>
 									<td th:text="${user.legalStatus}"></td>
-									<td th:text="${user.generalInformation}"></td>
 									<td th:text="${user.state}"></td>
 									<td th:text="${user.district}"></td>
 									<td th:text="${user.block}"></td>
 									<td th:text="${user.gp}"></td>
 									<td th:text="${user.application_date}"></td>
+									<td th:text="${user.blockContactName}"></td>
+									<td th:text="${user.blockContactEmail}"></td>
+									<td th:text="${user.blockContactMobile}"></td>
+									<td th:text="${user.blockContactAddress}"></td>
+									<td th:text="${user.blockContactDesignation}"></td>
+									<td th:text="${user.gpContactName}"></td>
+									<td th:text="${user.gpContactEmail}"></td>
+									<td th:text="${user.gpContactMobile}"></td>
+									<td th:text="${user.gpContactAddress}"></td>
+									<td th:text="${user.gpContactDesignation}"></td>
+									<td th:text="${user.contactName}"></td>
+									<td th:text="${user.contactEmail}"></td>
+									<td th:text="${user.contactMobile}"></td>
+									<td th:text="${user.contactAddress}"></td>
 									<td th:text="${user.billingAddress}"></td>
+									<td th:text="${user.generalInformation}"></td>
 									
 									
-									
-									
-
-
-
+								
 									<td><a class="btn btn-primary btn-sm"
-										th:href="@{/edit/{crfId}(crfId=${user.crfId})}"><i
+										th:href="@{/edit_crf/{crfId}(crfId=${user.crfId})}"><i
 											class="fa fa-pencil fa-fw h3"></i>Edit</a></td>
 									<td><a class="btn btn-danger btn-sm"
-										th:href="@{/delete/{crfId}(crfId=${user.crfId})}"><i
+										th:href="@{/delete_crf/{crfId}(crfId=${user.crfId})}"><i
 											class="fa fa-trash h3 " aria-hidden="true"></i>Delete</a></td>
 								</tr>
 
@@ -129,7 +151,7 @@ ul, li, a {
 				
 
 				<marquee class="text-lg text-uppercase text-light">
-					<strong><b>-----------------: The List of User
+					<strong><b>-----------------: The List of Customer Request
 							:-----------------</b></strong>
 				</marquee>
 

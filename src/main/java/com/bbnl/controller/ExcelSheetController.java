@@ -41,7 +41,7 @@ public class ExcelSheetController {
 		response.setContentType("application/octet-stream");
 		String headerKey = "Content-Disposition";
 		
-		DateFormat dateFormatter = new SimpleDateFormat("yyyy-mm-dd_hh:mm:ss");
+		DateFormat dateFormatter = new SimpleDateFormat("yyyy-MM-dd_hh:mm:ss");
 		String currentDateTime = dateFormatter.format(new Date());
 		String fileName = "users_"+currentDateTime + ".xlsx";
 		String headerValue = "attachement; filename=" +fileName;

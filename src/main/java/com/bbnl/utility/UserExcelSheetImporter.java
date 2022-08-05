@@ -36,7 +36,6 @@ public class UserExcelSheetImporter {
 		
 	}
 	
-	@SuppressWarnings("deprecation")
 	public static List<CustomerRequestForm> convertExcelToListOfUsers(InputStream stream){
 		
 		List<CustomerRequestForm> list = new ArrayList<>();
@@ -98,58 +97,58 @@ public class UserExcelSheetImporter {
 						user.setBillingAddress(cell.getStringCellValue());
 						break;
 					case 9:						
-						user.setGp(cell.getStringCellValue());
-						break;
-					case 10:						
 						user.setGpContactName(cell.getStringCellValue());
 						break;
-					case 11:												
+					case 10:												
 						user.setGpContactEmail(cell.getStringCellValue());
 						break;
-					case 12:						
+					case 11:						
 						user.setGpContactMobile(cell.getStringCellValue());
 						break;
-					case 13:
+					case 12:
 						user.setGpContactAddress(cell.getStringCellValue());
 						break;
-					case 14:
+					case 13:
 						user.setGpContactDesignation(cell.getStringCellValue());
-						break;
-					case 15:
-						user.setBlock(cell.getStringCellValue());
-						break;
-					case 16:
+						break;					
+					case 14:
 						user.setBlockContactName(cell.getStringCellValue());
 						break;
-					case 17:
+					case 15:
 						user.setBlockContactEmail(cell.getStringCellValue());
 						break;
-					case 18:
+					case 16:
 						user.setBlockContactMobile(cell.getStringCellValue());
 						break;
-					case 19:
+					case 17:
 						user.setBlockContactAddress(cell.getStringCellValue());
 						break;
-					case 20:
+					case 18:
 						user.setBlockContactDesignation(cell.getStringCellValue());
 						break;
-					case 21:
+					case 19:
 						user.setContactName(cell.getStringCellValue());
 						break;
-					case 22:
+					case 20:
 						user.setContactMobile(cell.getStringCellValue());
 						break;
-					case 23:
+					case 21:
 						user.setContactAddress(cell.getStringCellValue());
 						break;
-					case 24:
+					case 22:
 						user.setContactEmail(cell.getStringCellValue());
 						break;
-					case 25:
+					case 23:
 						user.setState(cell.getStringCellValue());
 						break;
-					case 26:
+					case 24:
 						user.setDistrict(cell.getStringCellValue());
+						break;
+					case 25:
+						user.setBlock(cell.getStringCellValue());
+						break;
+					case 26:						
+						user.setGp(cell.getStringCellValue());
 						break;
 					case 27:
 						user.setGeneralInformation(cell.getStringCellValue());
