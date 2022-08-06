@@ -23,7 +23,7 @@ public class ServiceProvider {
 	@Column(name = "sp_name", length = 250)
 	private String spName;
 
-	@OneToOne(targetEntity = ServiceType.class,fetch = FetchType.LAZY)
+	@OneToOne(targetEntity = ServiceType.class,fetch = FetchType.EAGER)
 	@JoinColumn(name = "service_type")
 	private ServiceType serviceType;
 
@@ -48,16 +48,16 @@ public class ServiceProvider {
 	@Column(name = "ill_required")
 	private boolean illRequired;
 
-	@OneToOne(targetEntity = State.class,fetch = FetchType.LAZY)
+	@OneToOne(targetEntity = State.class,fetch = FetchType.EAGER)
 	@JoinColumn(name = "service_state")
 	private State serviceState;
 
 	
-	@OneToOne(targetEntity = District.class,fetch = FetchType.LAZY)
+	@OneToOne(targetEntity = District.class,fetch = FetchType.EAGER)
 	@JoinColumn(name = "service_district")
 	private District serviceDistrict;
 
-	@OneToOne(targetEntity = Block.class,fetch = FetchType.LAZY)
+	@OneToOne(targetEntity = Block.class,fetch = FetchType.EAGER)
 	@JoinColumn(name = "service_block")
 	private Block serviceBlock;
 
@@ -67,11 +67,11 @@ public class ServiceProvider {
 	@Column(name = "address_line2", length = 250)
 	private String addressLine2;
 
-	@OneToOne(targetEntity =State.class,fetch = FetchType.LAZY)
+	@OneToOne(targetEntity =State.class,fetch = FetchType.EAGER)
 	@JoinColumn(name = "state")
 	private State state;
 
-	@OneToOne(targetEntity = District.class,fetch = FetchType.LAZY)
+	@OneToOne(targetEntity = District.class,fetch = FetchType.EAGER)
 	@JoinColumn(name = "district")
 	private District district;
 
