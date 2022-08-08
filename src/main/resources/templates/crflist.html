@@ -36,6 +36,7 @@ ul, li, a {
 </style>
 </head>
 <body>
+	<nav th:include="base3 :: navb3"></nav>
 	
 	<div class="container-fluid">
 		<div class="row">
@@ -147,13 +148,16 @@ ul, li, a {
 							
 					</p>
 					
-					
+					<p class="text-warning container"><b>Note:</b> if you want to upload bulk data through excel and want to download the demo excel sheet then click 
+					<a class="btn btn-success" th:href="@{/download_file}">here</a>
+				</p>
 				
 
 				<marquee class="text-lg text-uppercase text-light">
 					<strong><b>-----------------: The List of Customer Request
 							:-----------------</b></strong>
 				</marquee>
+				
 
 			</div>
 
