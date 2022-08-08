@@ -1,11 +1,15 @@
 body
 {
-  margin:0px;
-  padding:0px;
-	font-family: "Open Sans", arial;
+	margin:0px;
+	padding:0px;
 	background:linear-gradient(rgba(0, 0, 0, .8), rgba(0, 0, 0, .8)),url(../img/connections_bg.jpg);
-	color:#fff;
+
+}
+
+table{
+		color:#fff;
 	font-weight:300;
+	font-family: "Open Sans", arial;
 }
 
 table, th, td {

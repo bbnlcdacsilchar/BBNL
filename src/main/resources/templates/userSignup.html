@@ -15,42 +15,50 @@
 				<label class="tab">Sign up User</label>
 				<div class="hr"></div>
 				<div class="login-form">
-				 <form action="#" th:action="@{/saveuser}" th:object="${user}" method="post">
+				 <form onsubmit="return validateForm();" action="#" name="signupform" th:action="@{/saveuser}" th:object="${user}" method="post">
+					<!-- <input type="hidden" th:field="*{userId}" />
+					<input type="hidden" th:field="*{status}" />
+					<input type="hidden" th:field="*{isLocked}" />
+					<input type="hidden" th:field="*{unsuccessfulEntry}" />	 -->
 					
-					
-					<div class="row row-cols-3">
-						<div class="group col">
-							<label for="user" class="label">First Name</label>
-							<input type="text" class="input" th:field="*{firstName}">
+					<div class="row row-cols-3 sec">
+						<div class="group col" id="fname">
+							<label class="label"><span class="text-danger"> * </span>First Name</label>
+							<input type="text" class="input" th:field="*{firstName}" >
+							<small class="formerror"></small>
 						</div>
-						<div class="group col">
-							<label for="user" class="label">Middle Name</label>
+						<div class="group col" id="mname">
+							<label class="label">Middle Name</label>
 							<input type="text" class="input" th:field="*{middleName}">
 						</div>
-						<div class="group col">
-							<label for="user" class="label">Last Name</label>
-							<input type="text" class="input" th:field="*{lastName}">
+						<div class="group col" id="lname">
+							<label class="label"><span class="text-danger"> * </span>Last Name</label>
+							<input type="text" class="input" th:field="*{lastName}" >
+							<small class="formerror"></small>
 						</div>
 					</div>
 											
 					<div class="row row-cols-3">						
-						<div class="group col">
-							<label class="label">E-mail ID</label>
-							<input type="email" class="input" th:field="*{email}">
+						<div class="group col" id="email">
+							<label class="label"><span class="text-danger"> * </span>E-mail ID</label>
+							<input type="text" class="input" th:field="*{email}" >
+							<small class="formerror"></small>
 						</div>
-						<div class="group col">
-							<label class="label">Password</label>
-							<input type="password" class="input" th:field="*{password}">
+						<div class="group col"  id="password">
+							<label class="label"><span class="text-danger"> * </span>Password</label>
+							<input type="password" class="input" th:field="*{password}" >
+							<small class="formerror"></small>
 						</div>
-						<div class="group col">
-							<label class="label">Re-type Password</label>
-							<input type="password" class="input">
+						<div class="group col" id="repassword">
+							<label class="label"><span class="text-danger"> * </span>Re-type Password</label>
+							<input type="password" class="input" name="repassword">
+							<small class="formerror"></small>
 						</div>
 					</div>
 					
-					<div class="row row-cols-2">
+					<div class="row row-cols-2 sec">
 						<div class="group col">
-							<label class="label">Security Question</label>
+							<label class="label"><span class="text-danger"> * </span>Security Question</label>
 							<select class="input btn-secondary" th:field="*{secQuestion}">
 								<option value="What is your favorite color?">What is your favorite color?</option>
 								<option value="In what city were you born?">In what city were you born?</option>
@@ -59,26 +67,29 @@
 								<option value="What was your favorite food as a child?">What was your favorite food as a child?</option>
 							</select>
 						</div>
-						<div class="group col">
-							<label class="label">Address</label>
-							<input type="text" class="input" th:field="*{address}">
+						<div class="group col"  id="address">
+							<label class="label"><span class="text-danger"> * </span>Address</label>
+							<input type="text" class="input" th:field="*{address}" >
+							<small class="formerror"></small>
+						</div>
+					</div>
+					
+					<div class="row row-cols-2 sec">
+						<div class="group col" id="answer">
+							<label class="label"><span class="text-danger"> * </span>Security Answer</label>
+							<input type="text" class="input" th:field="*{secAnswer}" >
+							<small class="formerror"></small>
+						</div>
+						<div class="group col" id="city">
+							<label class="label"><span class="text-danger"> * </span>City</label>
+							<input type="text" class="input" th:field="*{city}" >
+							<small class="formerror"></small>
 						</div>
 					</div>
 					
 					<div class="row row-cols-2">
 						<div class="group col">
-							<label class="label">Security Answer</label>
-							<input type="text" class="input" th:field="*{secAnswer}">
-						</div>
-						<div class="group col">
-							<label class="label">City</label>
-							<input type="text" class="input" th:field="*{city}">
-						</div>
-					</div>
-					
-					<div class="row row-cols-2">
-						<div class="group col">
-							<label class="label">Account Type</label>
+							<label class="label"><span class="text-danger"> * </span>Account Type</label>
 							<select class="input btn-secondary" th:field="*{role}">
 								<option value="ROLE_CUSTOMER">CUSTOMER</option>
 								<option value="ROLE_USER">BBNL USER</option>
@@ -86,9 +97,10 @@
 								<option value="ROLE_MINISTERIAL">MINISTERIAL USER</option>
 							</select>
 						</div>
-						<div class="group col">
-							<label for="m_no" class="label">Mobile Number</label>
-							<input type="tel" class="input" th:field="*{mobileNumber}">
+						<div class="group col" id="mobile">
+							<label for="m_no" class="label"><span class="text-danger"> * </span>Mobile Number</label>
+							<input type="tel" class="input" th:field="*{mobileNumber}" >
+							<small class="formerror"></small>
 						</div>
 					</div>
 					<div class="group submit">
@@ -101,6 +113,8 @@
 				
 			</div>
 		</div>
-
+		<script type="text/javascript" th:src="@{/js/user_signup.js}"></script>
 	</body>
+
+	
 </html>

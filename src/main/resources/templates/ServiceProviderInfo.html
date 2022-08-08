@@ -37,6 +37,7 @@
 		<th>district</th>
 		<th>email</th>
 		<th>mobile no</th>
+		<th>pan Image</th>
 		<th>Edit Link</th>
 		
 		</tr>
@@ -67,11 +68,20 @@
 		<td th:text="${sProvider.district.districtName}">District</td>
 		<td th:text="${sProvider.emailId}">Email Id</td>
 		<td th:text="${sProvider.mobileNo}">Mobile Number</td>
+		<td>
+		<img th:src="@{${sProvider.mainImagePath}}" style="width: 120px" class="img-fluid"/> 
+		
+		</td> 
+		
+		
+		
+		
 		<td><a class=" btn btn-info" th:href="@{'ServiceProviderList/edit/' + ${sProvider.spId}}">Edit</a></td>
 		
 	</tbody>
 		
 	</table>
+	
 </div>
 
 </body>
