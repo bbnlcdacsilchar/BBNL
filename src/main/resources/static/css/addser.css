@@ -79,3 +79,24 @@ body {
   right: 0;
   top: 0;
 }
+
+.cc8 {
+	background-color: white;
+	border: 2px solid white;
+	border-radius: 5px;
+	position:absolute;
+	margin-top: 300px;
+	right:8px;
+	padding: 30px;
+	
+}
+.cc9 {
+	background-color: white;
+	border: 2px solid white;
+	border-radius: 5px;
+	position:absolute;
+	margin-top: 275px;
+	right:8px;
+	
+	
+}
