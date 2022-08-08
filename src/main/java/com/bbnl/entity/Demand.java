@@ -22,16 +22,16 @@ public class Demand {
 	private Integer demandId;
 	@Column(name = "demand_type")
 	private Integer demandType;
-	@OneToOne(targetEntity = State.class,fetch = FetchType.LAZY)
+	@OneToOne(targetEntity = State.class,fetch = FetchType.EAGER)
 	@JoinColumn(name = "state_id")
 	private State state;
-	@OneToOne(targetEntity = District.class,fetch = FetchType.LAZY)
+	@OneToOne(targetEntity = District.class,fetch = FetchType.EAGER)
 	@JoinColumn(name = "district_id")
 	private District district;
-	@OneToOne(targetEntity = Block.class,fetch = FetchType.LAZY)
+	@OneToOne(targetEntity = Block.class,fetch = FetchType.EAGER)
 	@JoinColumn(name = "block_id")
 	private Block block;
-	@OneToOne(targetEntity = GramPanchayat.class,fetch = FetchType.LAZY)
+	@OneToOne(targetEntity = GramPanchayat.class,fetch = FetchType.EAGER)
 	@JoinColumn(name = "gp_id")
 	private GramPanchayat gp;
 	@Column(name = "status")

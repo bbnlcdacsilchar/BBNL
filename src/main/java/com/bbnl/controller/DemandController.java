@@ -50,10 +50,7 @@ public class DemandController {
 	
 	//Showing all Connections details
 	@GetMapping("/connection")
-	public String connection(Model model,Principal principal) {
-		String username = principal.getName();
-		User user = repo.getUserByUserId(username);
-		model.addAttribute("user",user);
+	public String connection(Model model) {
 		List<Demand> listDemand = demandService.listAllDemand();
 		model.addAttribute("listDemand", listDemand);
 		return "connections";
@@ -66,7 +63,6 @@ public class DemandController {
 		String username = principal.getName();
 		User user = repo.getUserByUserId(username);
 		model.addAttribute("user",user);
-		model.addAttribute("title", "Add Connection");
 		
 		List<State> liststate = stateService.listAllState();
 		model.addAttribute("liststate", liststate);
@@ -93,10 +89,7 @@ public class DemandController {
 	
 	//Edit connection
 	@RequestMapping("connection/edit/{id}")
-	public ModelAndView editConn(@PathVariable(name = "id") int id,Model model, Principal principal) {
-		String username = principal.getName();
-		User user = repo.getUserByUserId(username);
-		model.addAttribute("user",user);
+	public ModelAndView editConn(@PathVariable(name = "id") int id,Model model) {
 		ModelAndView mav = new ModelAndView("editConnection");
 		Demand demand = demandService.editDemand(id);
 		
