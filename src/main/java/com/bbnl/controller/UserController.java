@@ -38,19 +38,11 @@ import com.bbnl.exception.EmailExistsException;
 @Controller
 public class UserController {
 	
-	
-
 	@Autowired
 	PasswordResetTokenRepository passwordTokenRepository;
 	
-	
+	@Autowired
 	private UserService service;
-	
-	
-	public UserController(UserService service) {
-		super();
-		this.service = service;
-	}
 
 	@Autowired
 	private UserRepository repo;
@@ -64,8 +56,13 @@ public class UserController {
 	@Autowired
     private JavaMailSender mailSender;
 	
-	 @Autowired
+	@Autowired
 	private Environment env;
+	
+	public UserController(UserService service) {
+		super();
+		this.service = service;
+	}
 	
 	@GetMapping("/")
 	public String HomePage() {

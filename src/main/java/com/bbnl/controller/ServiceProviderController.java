@@ -1,7 +1,13 @@
 package com.bbnl.controller;
 
+import java.io.File;
 import java.io.IOException;
+import java.io.OutputStream;
 import java.util.List;
+
+import javax.servlet.http.HttpServletResponse;
+
+import org.hibernate.internal.build.AllowSysOut;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -27,6 +33,7 @@ import com.bbnl.service.SProviderService;
 import com.bbnl.service.ServiceTypeService;
 import com.bbnl.service.StateService;
 
+import org.springframework.util.MimeTypeUtils;
 import org.springframework.util.StringUtils;
 
 @Controller
@@ -47,6 +54,9 @@ public class ServiceProviderController {
 	
 	@Autowired 
 	private BlockService blockService;
+	
+	@Autowired
+	private RegisteredDocumentsService registeredDocumentsService;
 
 	/*
 	 * @Autowired private RegisteredDocumentsRepository documentsRepo;
@@ -73,8 +83,8 @@ public class ServiceProviderController {
 		
 		  List<ServiceType> listServiceType = servicetype.listAllService();
 		  model.addAttribute("listServiceType", listServiceType);
-		  model.addAttribute("ServiceType", new ServiceType()); ServiceProvider
-		  serviceProvider = new ServiceProvider();
+		  model.addAttribute("ServiceType", new ServiceType()); 
+		  ServiceProvider serviceProvider = new ServiceProvider();
 		  model.addAttribute("serviceProvider", serviceProvider);
 		  List<State> liststate = stateService.listAllState();
 			model.addAttribute("liststate", liststate);
@@ -93,20 +103,20 @@ public class ServiceProviderController {
 	@PostMapping("/serviceprovider/save")
 	public String saveServiceProviderDetails(ServiceProvider serviceProvider, RedirectAttributes redirectAttributes,
 			RegisteredDocuments registeredDocuments, Model model,
-			@RequestParam(name="panDocs") MultipartFile multipartFilePan,
-			@RequestParam(name="aadharDocs") MultipartFile multipartFileAadhar,
-			@RequestParam(name="licenseDocs") MultipartFile multipartFileLicense,
-			@RequestParam(name="gstinDocs") MultipartFile multipartFileGstin,
-			@RequestParam(name="cicDocs") MultipartFile multipartFileCic)throws IOException {
+			@RequestParam(required=false,name="panDocs") MultipartFile multipartFilePan,
+			@RequestParam(required=false,name="aadharDocs") MultipartFile multipartFileAadhar,
+			@RequestParam(required=false,name="licenseDocs") MultipartFile multipartFileLicense,
+			@RequestParam(required=false,name="gstinDocs") MultipartFile multipartFileGstin,
+			@RequestParam(required=false,name="cicDocs") MultipartFile multipartFileCic)throws IOException {
            System.out.println("working condition");
-		
+          
 		  System.out.println("multipan"+multipartFilePan);
-		  service.save(serviceProvider);
+		 
 
 		
 		
-		  
-		
+		  if(multipartFilePan !=null) {
+			  service.save(serviceProvider);
 		  String documentPan=StringUtils.cleanPath(multipartFilePan.getName());
 		  String documentAadhar=StringUtils.cleanPath(multipartFileAadhar.getName());
 		  String documentLicense=StringUtils.cleanPath(multipartFileLicense.getName());
@@ -138,15 +148,31 @@ public class ServiceProviderController {
 		
 		redirectAttributes.addFlashAttribute("message", "The user has been saved successfully");
 		return "redirect:/user";
+		  }
+		  else {
+			  service.save(serviceProvider);
+			  return "redirect:/user";
+		  }
+		
 	}
 	//Edit connection
 		@RequestMapping("ServiceProviderList/edit/{id}")
-		public ModelAndView editConn(@PathVariable(name = "id") long id,Model model) {
+		public ModelAndView editConn(@PathVariable(name = "id") long id,Model model,HttpServletResponse resp) {
+			System.out.println("spid:"+id);	
+			ServiceProvider servicePro = service.editServiceProvider(id);
 			
-			
+			List<ServiceType> listServiceType = servicetype.listAllService();
+			  model.addAttribute("listServiceType", listServiceType);
+			  model.addAttribute("ServiceType", new ServiceType()); 
+			  ServiceProvider serviceProvider = new ServiceProvider();
+			  model.addAttribute("serviceProvider", serviceProvider);
 			
 			ModelAndView editView = new ModelAndView("editServiceProviderForm");
-			ServiceProvider serviceProvider = service.get(id);
+			
+			
+			RegisteredDocuments Documents=registeredDocumentsService.editRedistereddocuments(id);
+		
+			
 			
 			List<State> liststate = stateService.listAllState();
 			model.addAttribute("liststate", liststate);
@@ -157,8 +183,13 @@ public class ServiceProviderController {
 			List<Block> listBlock = blockService.listAllBlock();
 			model.addAttribute("listBlock", listBlock);
 			
+			List<RegisteredDocuments> registeredDocuments = registeredDocumentsService.listAll();
+			model.addAttribute("registeredDocuments",registeredDocuments);
 			
-			editView.addObject("serviceProvider", serviceProvider);		
+			
+			editView.addObject("serviceProvider", servicePro);	
+			//editView.addObject("serviceProvider", Documents);	
+			
 			return editView;
 		}
 	

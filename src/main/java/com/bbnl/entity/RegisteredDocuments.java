@@ -6,6 +6,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
@@ -21,8 +22,8 @@ public class RegisteredDocuments {
 		@Column(name = "sp_doc_id")
 	    private Long spDocId;
 	  
-		@OnDelete(action = OnDeleteAction.CASCADE)
-		@OneToOne()
+		
+		@ManyToOne()
 		@JoinColumn(name = "sp_id")
 	    private ServiceProvider serviceProvider;
 	     
@@ -33,10 +34,17 @@ public class RegisteredDocuments {
 			
 		}
 
-		public RegisteredDocuments(ServiceProvider serviceProvider, String spDocName) {
-			
-			this.serviceProvider = serviceProvider;
+		/*
+		 * public RegisteredDocuments(ServiceProvider serviceProvider, String spDocName)
+		 * {
+		 * 
+		 * this.serviceProvider = serviceProvider; this.spDocName = spDocName; }
+		 */
+		public RegisteredDocuments(String spDocName, ServiceProvider serviceProvider) {
+			super();
 			this.spDocName = spDocName;
+			this.serviceProvider = serviceProvider;
+			
 		}
 
 		public Long getSpDocId() {

@@ -34,12 +34,12 @@ public class CustomUserDetails implements UserDetails {
 
 	@Override
 	public String getPassword() {
-		return user.getPassword();
+		return this.user.getPassword();
 	}
 
 	@Override
 	public String getUsername() {
-		return user.getEmail();
+		return this.user.getEmail();
 	}
 
 	@Override
@@ -49,7 +49,7 @@ public class CustomUserDetails implements UserDetails {
 
 	@Override
 	public boolean isAccountNonLocked() {
-		return user.isAccountNonLocked();
+		return this.user.isAccountNonLocked();
 	}
 
 	@Override
@@ -59,7 +59,7 @@ public class CustomUserDetails implements UserDetails {
 
 	@Override
 	public boolean isEnabled() {
-		return user.isStatus();
+		return this.user.isStatus();
 	}
 
 	public User getUser() {

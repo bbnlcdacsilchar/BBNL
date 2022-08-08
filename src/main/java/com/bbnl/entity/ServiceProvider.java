@@ -1,6 +1,10 @@
 package com.bbnl.entity;
 
+import java.util.HashSet;
 import java.util.Objects;
+import java.util.Set;
+
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -8,8 +12,10 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
+import javax.persistence.Transient;
 
 @Entity
 @Table(name="service_provider")
@@ -23,7 +29,7 @@ public class ServiceProvider {
 	@Column(name = "sp_name", length = 250)
 	private String spName;
 
-	@OneToOne(targetEntity = ServiceType.class,fetch = FetchType.LAZY)
+	@OneToOne(targetEntity = ServiceType.class,fetch = FetchType.EAGER)
 	@JoinColumn(name = "service_type")
 	private ServiceType serviceType;
 
@@ -48,16 +54,16 @@ public class ServiceProvider {
 	@Column(name = "ill_required")
 	private boolean illRequired;
 
-	@OneToOne(targetEntity = State.class,fetch = FetchType.LAZY)
+	@OneToOne(targetEntity = State.class,fetch = FetchType.EAGER)
 	@JoinColumn(name = "service_state")
 	private State serviceState;
 
 	
-	@OneToOne(targetEntity = District.class,fetch = FetchType.LAZY)
+	@OneToOne(targetEntity = District.class,fetch = FetchType.EAGER)
 	@JoinColumn(name = "service_district")
 	private District serviceDistrict;
 
-	@OneToOne(targetEntity = Block.class,fetch = FetchType.LAZY)
+	@OneToOne(targetEntity = Block.class,fetch = FetchType.EAGER)
 	@JoinColumn(name = "service_block")
 	private Block serviceBlock;
 
@@ -67,11 +73,11 @@ public class ServiceProvider {
 	@Column(name = "address_line2", length = 250)
 	private String addressLine2;
 
-	@OneToOne(targetEntity =State.class,fetch = FetchType.LAZY)
+	@OneToOne(targetEntity =State.class,fetch = FetchType.EAGER)
 	@JoinColumn(name = "state")
 	private State state;
 
-	@OneToOne(targetEntity = District.class,fetch = FetchType.LAZY)
+	@OneToOne(targetEntity = District.class,fetch = FetchType.EAGER)
 	@JoinColumn(name = "district")
 	private District district;
 
@@ -80,6 +86,13 @@ public class ServiceProvider {
 
 	@Column(name = "mobile_no", length = 10)
 	private String mobileNo;
+	
+	@Transient
+	@Column(name="main_images")
+	private String mainImage;
+	
+	@OneToMany(mappedBy= "serviceProvider",cascade=CascadeType.ALL)
+	private Set<RegisteredDocuments> documentsImages=new HashSet<>();
 
 	public ServiceProvider() {
 		super();
@@ -262,30 +275,28 @@ public class ServiceProvider {
 	public void setMobileNo(String mobileNo) {
 		this.mobileNo = mobileNo;
 	}
+	
 
-	@Override
-	public int hashCode() {
-		return Objects.hash(addressLine1, addressLine2, authorizedSignatory, emailId, gst, illRequired, licenseNo,
-				mobileNo, pan, signatoryAadharNo, spId, spName, tan);
-	}
+	
 
-	@Override
-	public boolean equals(Object obj) {
-		if (this == obj)
-			return true;
-		if (obj == null)
-			return false;
-		if (getClass() != obj.getClass())
-			return false;
-		ServiceProvider other = (ServiceProvider) obj;
-		return Objects.equals(addressLine1, other.addressLine1) && Objects.equals(addressLine2, other.addressLine2)
-				&& Objects.equals(authorizedSignatory, other.authorizedSignatory)
-				&& Objects.equals(emailId, other.emailId) && Objects.equals(gst, other.gst)
-				&& illRequired == other.illRequired && Objects.equals(licenseNo, other.licenseNo)
-				&& Objects.equals(mobileNo, other.mobileNo) && Objects.equals(pan, other.pan)
-				&& Objects.equals(signatoryAadharNo, other.signatoryAadharNo) && Objects.equals(spId, other.spId)
-				&& Objects.equals(spName, other.spName) && Objects.equals(tan, other.tan);
-	}
+	/*
+	 * @Override public int hashCode() { return Objects.hash(addressLine1,
+	 * addressLine2, authorizedSignatory, emailId, gst, illRequired, licenseNo,
+	 * mobileNo, pan, signatoryAadharNo, spId, spName, tan); }
+	 * 
+	 * @Override public boolean equals(Object obj) { if (this == obj) return true;
+	 * if (obj == null) return false; if (getClass() != obj.getClass()) return
+	 * false; ServiceProvider other = (ServiceProvider) obj; return
+	 * Objects.equals(addressLine1, other.addressLine1) &&
+	 * Objects.equals(addressLine2, other.addressLine2) &&
+	 * Objects.equals(authorizedSignatory, other.authorizedSignatory) &&
+	 * Objects.equals(emailId, other.emailId) && Objects.equals(gst, other.gst) &&
+	 * illRequired == other.illRequired && Objects.equals(licenseNo,
+	 * other.licenseNo) && Objects.equals(mobileNo, other.mobileNo) &&
+	 * Objects.equals(pan, other.pan) && Objects.equals(signatoryAadharNo,
+	 * other.signatoryAadharNo) && Objects.equals(spId, other.spId) &&
+	 * Objects.equals(spName, other.spName) && Objects.equals(tan, other.tan); }
+	 */
 
 	@Override
 	public String toString() {
@@ -297,6 +308,33 @@ public class ServiceProvider {
 				+ state + ", district=" + district + ", emailId=" + emailId + ", mobileNo=" + mobileNo + "]";
 	}
 
+	public String getMainImage() {
+		return mainImage;
+	}
+
+	public void setMainImage(String mainImage) {
+		this.mainImage = mainImage;
+	}
 	
+	
+
+	public Set<RegisteredDocuments> getDocumentsImages() {
+		return documentsImages;
+	}
+
+	public void setDocumentsImages(Set<RegisteredDocuments> documentsImages) {
+		this.documentsImages = documentsImages;
+	}
+	
+	
+	public void addExtraDocumentsImages(String documentsImagesName) {
+		this.documentsImages.add(new RegisteredDocuments(documentsImagesName,this)); 
+	}
+	
+	@Transient
+	public String getMainImagePath() {
+		 if (spId == null) return null;
+		return "/serviceProvider/"+this.spId+"/"+"pan.jpg";
+	}
 
 }
