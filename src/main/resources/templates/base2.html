@@ -25,6 +25,10 @@
 		  <li class="nav-item">
 			<a class="nav-link text-white ml-3" th:href="@{/about}">About</a>
 		  </li>
+      <li class="nav-item" th:switch="${#authentication}? ${#authorization.expression('isAuthenticated()')} : ${false}">
+      		<a th:case="${true}" class="nav-link text-white ml-3" th:href="@{/user_list}">UserList</a>
+          <a th:case="${true}" class="nav-link text-white ml-3" th:href="@{/crf_list}">CustomerRequestList</a>
+      </li>
 	      <li class="nav-item" th:switch="${#authentication}? ${#authorization.expression('isAuthenticated()')} : ${false}">
         	<a th:case="${true}" class="nav-link text-white ml-3" href="/user"><span sec:authentication="principal.username"></span></a>
         	<a th:case="${false}" class="nav-link text-white ml-3" href="#" th:href="@{/signup}">SignUp</a>

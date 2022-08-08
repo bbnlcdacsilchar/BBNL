@@ -2,6 +2,7 @@ package com.bbnl.service;
 
 import java.util.Date;
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
@@ -164,4 +165,20 @@ public class UserService implements IUserService {
 //		return repo.save(user);
 		
 	}
+	
+	//User Management Service
+	
+		public User getUserById(String id) {
+			Optional<User> optional = repo.findById(id);
+
+			if (optional.isPresent()) {
+				return optional.get();
+			} else {
+				throw new RuntimeException("User not found of id " + id);
+			}
+		}
+
+		public void deleteUserById(String id) {
+			repo.deleteById(id);
+		}
 }

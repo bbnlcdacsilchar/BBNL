@@ -19,17 +19,13 @@ import com.bbnl.handler.LoginSuccessHandler;
 @SuppressWarnings("deprecation")
 public class MyConfig extends WebSecurityConfigurerAdapter {
 	
-//	@Autowired
-//	private CustomLoginFailureHandler failureHandler;
+
 	
 	@Bean
 	CustomLoginFailureHandler failureHandler() {
 		return new CustomLoginFailureHandler();
 	}
-	
-//	@Autowired
-//	private LoginSuccessHandler successHandler;
-	
+
 	@Bean
 	CustomLoginSuccessHandler successHandler() {
 		return new CustomLoginSuccessHandler();
@@ -76,6 +72,7 @@ public class MyConfig extends WebSecurityConfigurerAdapter {
 		.antMatchers("/customer/**").hasRole("CUSTOMER")
 		.antMatchers("/ministerial/**").hasRole("MINISTERIAL")
 		.antMatchers("/provider/**").hasRole("PROVIDER")
+		.antMatchers("/user_list").authenticated()
 		.and()
 		.formLogin()
 			.loginPage("/signin")
