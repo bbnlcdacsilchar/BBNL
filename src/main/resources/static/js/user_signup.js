@@ -1,18 +1,15 @@
-function showAlert() {
-	alert("The button was clicked!");
-}
-
 function validateForm() {
     var returnval = true;
+
     clearErrors();
 
-    var fname = document.forms['signupform']["fname"].value.trim();
+    var fname = document.forms['signupform']["firstName"].value.trim();
     if (fname.length < 5) {
         seterror("fname", "*Invalid First Name.");
         returnval = false;
     }
 
-    var lname = document.forms['signupform']["lname"].value.trim();
+    var lname = document.forms['signupform']["lastName"].value.trim();
     if (lname.length < 5) {
         seterror("lname", "*Invalid Last Name.");
         returnval = false;
@@ -43,7 +40,7 @@ function validateForm() {
         returnval = false;
     }
 
-    var secans = document.forms['signupform']["answer"].value.trim();
+    var secans = document.forms['signupform']["secAnswer"].value.trim();
     if (secans === '') {
         seterror("answer", "*Security answer can't be empty");
         returnval = false;
@@ -55,7 +52,7 @@ function validateForm() {
         returnval = false;
     }
 
-    var mob = document.forms['signupform']["mobile"].value.trim();
+    var mob = document.forms['signupform']["mobileNumber"].value.trim();
     var mobformat = /^\d{10}$/;
     if (!mob.match(mobformat)) {
         seterror("mobile", "*Mobile number must be 10 digits.");
