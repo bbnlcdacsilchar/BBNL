@@ -8,9 +8,9 @@
 </head>
 <body>
 	<section class="text-center mt-1">
-		<h1>Welcome, <span sec:authentication="principal.username"></span></h1>
+		<h1 >Welcome, <span class="text-info" sec:authentication="principal.username"></span></h1>
 		<h3 > <a class="btn btn-primary" th:href="@{/user/connection}">Connection details</a> </h3>
-		<br /> <a class="btn btn-primary" th:href="@{/user/ServiceProviderList}">Show Service Provider List</a>
+		<br /><a class="btn btn-primary" th:href="@{/user/ServiceProviderList}">Show Service Provider List</a>
 	<br />
 	<br />
 	<br /> <a class="btn btn-primary" th:href="@{/user/saveServiceProvider}">Add Service Provider</a>
