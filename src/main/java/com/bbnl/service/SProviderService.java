@@ -22,7 +22,8 @@ public class SProviderService {
 		serviceProviderRepository.save(serviceProvider);
 	}
 	
-	public ServiceProvider get(Long id) {
+	public ServiceProvider editServiceProvider(Long id) {
+		System.out.println("documents:"+id);
 		return serviceProviderRepository.findById(id).get();
 		
 	}

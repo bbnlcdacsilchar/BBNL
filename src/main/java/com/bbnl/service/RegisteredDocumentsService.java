@@ -23,7 +23,7 @@ public class RegisteredDocumentsService {
 		return repo.save(registeredDocuments);
 	}
 
-	public RegisteredDocuments get(Long id) {
+	public RegisteredDocuments editRedistereddocuments(Long id) {
 		return repo.findById(id).get();
 		
 	}

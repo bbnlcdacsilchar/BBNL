@@ -32,7 +32,7 @@
 		<h5 class="#6610f2 fw-semibold">Service Provider Details</h5>
 		<br />
 		<form class="row g-3" action="#" th:action="@{/user/serviceprovider/save}"
-			th:object="${serviceProvider}" method="post" enctype="multipart/form-data">
+			th:object="${serviceProvider}" method="post">
 			<input type="hidden" th:field="*{spId}">
 			<div class="col-md-6">
 				<label for="serviceProviderName" class="form-label fw-bold"> Name of
@@ -88,7 +88,7 @@
 			</div>
 			
 					
-				<div class="container-fluid cc1 row g-3">
+				<!-- <div class="container-fluid cc1 row g-3">
 				<h5 class="#6610f2 fw-semibold">Upload File</h5>
 				<br />
 					
@@ -121,7 +121,7 @@
 				 <input type="file" id="cicDoc" name="cicDocs" style="visibility:hidden;">
 			</div>
 				
-				</div>	
+				</div>	 -->
 				
 				<div class="container-fluid cc2 row g-3">
 				<div>
