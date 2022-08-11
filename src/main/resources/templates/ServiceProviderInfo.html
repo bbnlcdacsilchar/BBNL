@@ -11,7 +11,7 @@
 <!-- --link for display- -->
 </head>
 <body>
-<nav th:include="base3 :: navb3"></nav>
+<!-- <nav th:include="base3 :: navb3"></nav> -->
 <!-- <div align="center">
 	<h1 class="text-center text-primary"><i style="font-size:60px;color:blue;">Service provider Details</i></h1>
 	
@@ -104,7 +104,7 @@
 		<th>district</th>
 		<th>email</th>
 		<th>mobile no</th>
-		<th>pan Image</th>
+		<!-- <th>pan Image</th> -->
 		<th>Edit Link</th>
 			</tr>
 		</thead>
@@ -134,10 +134,10 @@
 		<td th:text="${sProvider.district.districtName}">District</td>
 		<td th:text="${sProvider.emailId}">Email Id</td>
 		<td th:text="${sProvider.mobileNo}">Mobile Number</td>
-		<td>
+		<!-- <td>
 		<img th:src="@{${sProvider.mainImagePath}}" style="width: 120px" class="img-fluid"/> 
 		
-		</td> 
+		</td>  -->
 		
 		
 		
