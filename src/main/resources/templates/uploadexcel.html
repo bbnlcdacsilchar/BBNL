@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html xmlns:th = "www.thymeleaf.org">
+<html xmlns:th="www.thymeleaf.org">
 <head>
 <meta charset="UTF-8">
 <title>Upload Excel</title>
@@ -8,55 +8,102 @@
 	rel="stylesheet"
 	integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor"
 	crossorigin="anonymous">
-	
-	<style type="text/css">
-	body{
-		background-image: linear-gradient(380deg, black, indigo);
-		background-repeat: no-repeat;
-		background-size: 2100px 1500px;
-	
-	}
-		
-	
-	</style>
+<link rel="stylesheet"
+	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.2/css/all.min.css"
+	integrity="sha512-1sCRPdkRXhBV2PBLUdRb4tMg1w2YPf37qatUFeS7zlBy7jJI8Lf4VHwWfZZfpXtYSLy85pkm9GaYVYMfw5BC1A=="
+	crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+<style type="text/css">
+body {
+	background-image: linear-gradient(240deg,green, black, aqua);
+	background-size: 2100px 1500px;
+}
+</style>
 </head>
 <body>
+	<nav th:include="base3 :: navb3"></nav>
+	<div id="demo" class="carousel slide" data-bs-ride="carousel">
+
+		<!-- Indicators/dots -->
+		<div class="carousel-indicators">
+			<button type="button" data-bs-target="#demo" data-bs-slide-to="0"
+				class="active"></button>
+			<button type="button" data-bs-target="#demo" data-bs-slide-to="1"></button>
+			<button type="button" data-bs-target="#demo" data-bs-slide-to="2"></button>
+		</div>
+
+		<!-- The slideshow/carousel -->
+		<div class="carousel-inner">
+			<div class="carousel-item active">
+				<img src="img/add_conn.jpg" alt="Los Angeles" class="d-block w-100" style="width:100%; height:650px;">
+			</div>
+			<div class="carousel-item">
+				<img src="img/connections_bg.jpg" alt="Chicago" class="d-block w-100" style="width:100%; height:650px;">
+			</div>
+			<div class="carousel-item">
+				<img src="img/user_signup.jpg" alt="New York" class="d-block w-100" style="width:100%; height:650px;">
+			</div>
+		</div>
+
+		<!-- Left and right controls/icons -->
+		<button class="carousel-control-prev" type="button"
+			data-bs-target="#demo" data-bs-slide="prev">
+			<span class="carousel-control-prev-icon"></span>
+		</button>
+		<button class="carousel-control-next" type="button"
+			data-bs-target="#demo" data-bs-slide="next">
+			<span class="carousel-control-next-icon"></span>
+		</button>
+	</div>
+	
 	<div class="container mt-5">
 		<div class="row offset-md-3 mt-5">
 			<div class="col-md-6 mt-5">
-				<h2 class="text-center text-white">Upload Excel Bulk Data</h2>
+				
+				
+				<h2 class="container bg-secondary text-center text-white p-3 rounded"><i class="fa-solid fa-file-import"></i>&nbsp;Upload Excel Bulk Data</h2>
 				<hr class="text-light">
 				<div th:if="${error !=null}">
 					<p class="text-danger">[[${error}]]</p>
 				</div>
-				
+
 				<div>
-					<p class="text-center text-warning"><b>[[${message}]]</b></p>
+					<p class="text-center text-warning">
+						<b>[[${message}]]</b>
+					</p>
 				</div>
+				
 				<div th:if="${param.success}">
-						<div class="alert alert-success text-center mt-3">You have successfully reset your password</div>
-					</div>
-					<div>
-					<p class="text-center text-success h3"><b>[[${message}]]</b></p>
-					</div>
-				<form th:action = "@{/upload_excel}" method ="post" enctype="multipart/form-data" >
+					<div class="alert alert-success text-center mt-3">File Is Uploaded and Save To The Database !!</div>
+				</div>
 				
+				<div th:if="${param.error}">
+					<div class="alert alert-warning text-center mt-3">Please upload excel file format !!</div>
+				</div>
+				<div>
+					<p class="text-center text-success h3">
+						<b>[[${message}]]</b>
+					</p>
+				</div>
+				<div class="container p-3 bg-dark rounded">
+				<form class="m-4" th:action="@{/upload_excel}" method="post" enctype="multipart/form-data">
+
 					<div class="form-group text-center">
-						<input type = "file" name="file" class="text-center form-control" required autofocus/>
+						<input type = "file" name="file" class="text-center form-control" required autofocus />
 					</div>
-					
-					
-					
+
+
+
 					<div class="form-group text-center mt-3 mb-3">
-						<button type="submit" class="btn btn-info container">
-							Upload File
-						</button>
+						<button type="submit" class="btn btn-info container">Upload File</button>
 					</div>
-				
+
 				</form>
+				</div>
 			</div>
 		</div>
-	</div>
+	</div><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
 
 </body>
 </html>
