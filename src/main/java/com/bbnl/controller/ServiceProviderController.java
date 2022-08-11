@@ -1,13 +1,10 @@
 package com.bbnl.controller;
 
-import java.io.File;
 import java.io.IOException;
-import java.io.OutputStream;
 import java.util.List;
 
 import javax.servlet.http.HttpServletResponse;
 
-import org.hibernate.internal.build.AllowSysOut;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -33,7 +30,6 @@ import com.bbnl.service.SProviderService;
 import com.bbnl.service.ServiceTypeService;
 import com.bbnl.service.StateService;
 
-import org.springframework.util.MimeTypeUtils;
 import org.springframework.util.StringUtils;
 
 @Controller
@@ -170,7 +166,7 @@ public class ServiceProviderController {
 			ModelAndView editView = new ModelAndView("editServiceProviderForm");
 			
 			
-			RegisteredDocuments Documents=registeredDocumentsService.editRedistereddocuments(id);
+			//RegisteredDocuments Documents=registeredDocumentsService.editRedistereddocuments(id);
 		
 			
 			
