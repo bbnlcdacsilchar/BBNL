@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org"
-	 xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+	xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
 <head>
 <meta charset="ISO-8859-1">
 <title>View-Page</title>
@@ -9,8 +9,11 @@
 	integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
 	crossorigin="anonymous">
 
+
 <link rel="stylesheet"
-	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.2/css/all.min.css"
+	integrity="sha512-1sCRPdkRXhBV2PBLUdRb4tMg1w2YPf37qatUFeS7zlBy7jJI8Lf4VHwWfZZfpXtYSLy85pkm9GaYVYMfw5BC1A=="
+	crossorigin="anonymous" referrerpolicy="no-referrer" />
 <style>
 button a {
 	text-decoration: none;
@@ -18,9 +21,8 @@ button a {
 }
 
 body {
-	background-image: linear-gradient(380deg, black, indigo);
+	background-image: linear-gradient(220deg, black, indigo,purple);
 }
-
 label {
 	color: whitesmoke;
 }
@@ -28,10 +30,6 @@ label {
 img {
 	height: 50px;
 	width: 60px;
-}
-
-ul, li, a {
-	font-size: 22px;
 }
 </style>
 </head>
@@ -47,11 +45,12 @@ ul, li, a {
 						Successfully Updated</div>
 				</div>
 				<a th:href="@{/logout}" class="btn btn-success float-right mb-2">Logout</a>
-				
-				<a th:href="@{/export_excel}" class="btn btn-success mb-2 mr-1">Export-Data-User-Excel</a>
-				
+
+				<a th:href="@{/export_excel}" class="btn btn-success mb-2 mr-1"><i class="fa-solid fa-file-export"></i>&nbsp;Export-Data-User-Excel</a>
+
 				<marquee class="text-lg text-uppercase text-light">
-					<strong><b>-----------------: The List of User	:-----------------</b></strong>
+					<strong><b>-----------------: The List of User
+							:-----------------</b></strong>
 				</marquee>
 
 				<div th:switch="${users}">
@@ -76,9 +75,9 @@ ul, li, a {
 									<th>FailedAttempt</th>
 									<th>AccountNonLocked</th>
 									<th>LockTime</th>
-									
-									
-									
+
+
+
 									<th>Edit</th>
 									<th>Delete</th>
 
@@ -103,18 +102,18 @@ ul, li, a {
 									<td th:text="${user.unsuccessfulAttempt}"></td>
 									<td th:text="${user.accountNonLocked}"></td>
 									<td th:text="${user.lockTime}"></td>
-									
-									
-									
+
+
+
 
 
 
 									<td><a class="btn btn-primary btn-sm"
 										th:href="@{/edit/{userId}(userId=${user.userId})}"><i
-											class="fa fa-pencil fa-fw h3"></i>Edit</a></td>
+											class="fa fa-pencil fa-fw"></i>Edit</a></td>
 									<td><a class="btn btn-danger btn-sm"
 										th:href="@{/delete/{userId}(userId=${user.userId})}"><i
-											class="fa fa-trash h3 " aria-hidden="true"></i>Delete</a></td>
+											class="fa fa-trash" aria-hidden="true"></i>Delete</a></td>
 								</tr>
 
 							</tbody>
@@ -122,13 +121,13 @@ ul, li, a {
 						</table>
 					</div>
 					<p>
-						<a class="btn btn-info" th:href="@{/signup}">Add New
-							User</a>
-							<a class="btn btn-info float-right" th:href="@{/upload_excel}" >Upload Bulk Data</a>
-							
+						<a class="btn btn-info" th:href="@{/signup}">Add New User</a> <a
+							class="btn btn-info float-right" th:href="@{/upload_excel}"><i class="fa-solid fa-file-import"></i>&nbsp;Upload
+							Bulk Data</a>
+
 					</p>
-					
-					
+
+
 				</div>
 
 				<marquee class="text-lg text-uppercase text-light">

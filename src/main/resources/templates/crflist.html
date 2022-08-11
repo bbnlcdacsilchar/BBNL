@@ -10,7 +10,9 @@
 	crossorigin="anonymous">
 
 <link rel="stylesheet"
-	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.2/css/all.min.css"
+	integrity="sha512-1sCRPdkRXhBV2PBLUdRb4tMg1w2YPf37qatUFeS7zlBy7jJI8Lf4VHwWfZZfpXtYSLy85pkm9GaYVYMfw5BC1A=="
+	crossorigin="anonymous" referrerpolicy="no-referrer" />
 <style>
 button a {
 	text-decoration: none;
@@ -18,7 +20,7 @@ button a {
 }
 
 body {
-	background-image: linear-gradient(380deg, black, indigo);
+	background-image: linear-gradient(310deg, black, indigo,green,purple);
 }
 
 label {
@@ -30,9 +32,6 @@ img {
 	width: 60px;
 }
 
-ul, li, a {
-	font-size: 22px;
-}
 </style>
 </head>
 <body>
@@ -50,7 +49,7 @@ ul, li, a {
 				<a th:href="@{/logout}" class="btn btn-success float-right mb-2">Logout</a>
 				
 				
-				<a th:href="@{/export_crf_excel}" class="btn btn-success mb-2 mr-1">Export-Data-CRF-Excel</a>
+				<a th:href="@{/export_crf_excel}" class="btn btn-success mb-2 mr-1"><i class="fa-solid fa-file-export"></i>&nbsp;Export-Data-CRF-Excel</a>
 				<marquee class="text-lg text-uppercase text-light">
 					<strong><b>-----------------: The List of Customer Request
 							:-----------------</b></strong>
@@ -144,7 +143,7 @@ ul, li, a {
 					<p>
 						<a class="btn btn-info" th:href="@{/signup}">Add New
 							User</a>
-							<a class="btn btn-info float-right" th:href="@{/upload_excel}" >Upload Bulk Data</a>
+							<a class="btn btn-info float-right" th:href="@{/upload_excel}" ><i class="fa-solid fa-file-import"></i>&nbsp;Upload Bulk Data</a>
 							
 					</p>
 					

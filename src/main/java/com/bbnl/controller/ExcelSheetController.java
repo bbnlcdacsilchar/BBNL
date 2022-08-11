@@ -66,7 +66,7 @@ public class ExcelSheetController {
 	
 
 //========================================================================================================
-	// For User
+	// For CRF
 	
 	@GetMapping("/upload_excel")
 	public String showUploadExcelForm() {
@@ -77,14 +77,14 @@ public class ExcelSheetController {
 
 	
 	@PostMapping("/upload_excel")
-	public ResponseEntity<?> uploadExcelData(@RequestParam("file") MultipartFile file) {
+	public String/* ResponseEntity<?> */uploadExcelData(@RequestParam("file") MultipartFile file) {
 		if(UserExcelSheetImporter.checkExcelFormat(file)) {
 			
 			excelService.saveExcel(file);
-			return ResponseEntity.ok(Map.of("message","File is uploaded and save to database."));
+			return "redirect:/upload_excel?success"; 
 			
 		}
-		return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Please upload excel file format");
+		return "redirect:/upload_excel?error";
 	}
 	
 
@@ -121,6 +121,10 @@ public class ExcelSheetController {
 		
 		
 	}
+	
+//=======================================================================================================================
+	
+	//For Download the demo Excel file with drop-down
 	
 	@GetMapping("/download_file")
 	public void downloadFile(HttpServletResponse response) throws IOException {
