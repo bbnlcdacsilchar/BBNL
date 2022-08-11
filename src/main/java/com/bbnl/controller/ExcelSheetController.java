@@ -1,5 +1,6 @@
 package com.bbnl.controller;
 
+import javax.servlet.ServletOutputStream;
 import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,7 +21,11 @@ import com.bbnl.utility.CustomerRequestFormToExcelSheet;
 import com.bbnl.utility.UserExcelSheetExporter;
 import com.bbnl.utility.UserExcelSheetImporter;
 
+import java.io.BufferedInputStream;
+import java.io.File;
+import java.io.FileInputStream;
 import java.io.IOException;
+import java.io.InputStream;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -61,7 +66,7 @@ public class ExcelSheetController {
 	
 
 //========================================================================================================
-	// For User
+	// For CRF
 	
 	@GetMapping("/upload_excel")
 	public String showUploadExcelForm() {
@@ -72,14 +77,14 @@ public class ExcelSheetController {
 
 	
 	@PostMapping("/upload_excel")
-	public ResponseEntity<?> uploadExcelData(@RequestParam("file") MultipartFile file) {
+	public String/* ResponseEntity<?> */uploadExcelData(@RequestParam("file") MultipartFile file) {
 		if(UserExcelSheetImporter.checkExcelFormat(file)) {
 			
 			excelService.saveExcel(file);
-			return ResponseEntity.ok(Map.of("message","File is uploaded and save to database."));
+			return "redirect:/upload_excel?success"; 
 			
 		}
-		return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Please upload excel file format");
+		return "redirect:/upload_excel?error";
 	}
 	
 
@@ -117,9 +122,36 @@ public class ExcelSheetController {
 		
 	}
 	
+//=======================================================================================================================
 	
+	//For Download the demo Excel file with drop-down
 	
-
+	@GetMapping("/download_file")
+	public void downloadFile(HttpServletResponse response) throws IOException {
+		
+		File file = new File("files/crf.xlsx");
+		
+		response.setContentType("application/octet-stream");
+		String headerKey = "Content-Disposition";
+		
+		String headerValue = "attachement; filename=" +file.getName();
 	
-
+		response.setHeader(headerKey, headerValue);
+		
+		ServletOutputStream outputStream = response.getOutputStream();
+		
+		BufferedInputStream inputStream = new BufferedInputStream(new FileInputStream(file));
+		
+		byte[] buffer = new byte[8192]; //8KB
+		
+		int bytesRead = -1;
+		
+		while((bytesRead = inputStream.read(buffer)) != -1) {
+			outputStream.write(buffer,0,bytesRead);
+		}
+		inputStream.close();
+		outputStream.close();
+		
+	}
+	
 }

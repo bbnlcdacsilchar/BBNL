@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+	<head>
+	<meta charset="UTF-8">
+	<title>Edit Connection</title>
+	<link href="/css/edit_conn.css" rel="stylesheet" media="all">
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
+	</head>
+	<body>
+	 	<div th:include="base3 :: navb3"></div>		
+		<div class="container">
+			<div class="frame">
+				<form class="form-signin" name="form" th:action="@{/user/saveconn}" th:object="${demand}" method="post">
+					<div class="nav d-flex justify-content-between">
+						<div class="head-1">
+							<input type="hidden" th:field="*{demandId}" />
+							<label>Demand Id : 
+								<span th:text="*{demandId}"></span>
+							</label>
+						</div>
+		          		<div class="head-2">
+		          			<input type="hidden" th:field="*{user}" />
+							<label>Demand User Id : 
+								<span th:text="*{user.userId}"></span>
+							</label>
+						</div>
+		      		</div>
+				    <label>Demand Type</label>
+				    <select class="form-styling" th:field="*{demandType}">
+						<option value="1">Single Customer</option>
+						<option value="2">Bulk Customer (Manual)</option>
+						<option value="3">Bulk Customer (Excel)</option>
+					</select>
+				    <label>State</label>
+				    <select class="form-styling" th:field="*{state}">
+				    	<option th:each="liststate : ${liststate}"
+							th:value="${liststate.stateId}"
+		                       th:text="${liststate.stateName}">
+		                   </option>
+					</select>
+				    <label>District</label>
+				    <select class="form-styling" th:field="*{district}">
+						<option th:each="listDistrict : ${listDistrict}"
+							th:value="${listDistrict.districtId}"
+		                       th:text="${listDistrict.districtName}">
+		               	 </option>
+					</select>
+				    <label>Block</label>
+				    <select class="form-styling" th:field="*{block}">
+						<option th:each="lisBlock : ${lisBlock}"
+							th:value="${lisBlock.blockId}"
+		                       th:text="${lisBlock.blockName}">
+		                   </option>
+					</select>
+				    <label>Gram Panchayats</label>
+				    <select class="form-styling" th:field="*{gp}">
+						<option th:each="listGramPanchayat : ${listGramPanchayat}"
+							th:value="${listGramPanchayat.gpId}"
+		                       th:text="${listGramPanchayat.gpName}">
+		                   </option>
+					</select>
+					<label>Status</label>
+				    <select class="form-styling" th:field="*{status}">
+						<option value="1">Draft</option>
+						<option value="2">Submitted</option>
+					</select>
+					
+					<div class="d-flex justify-content-center">
+			  			<a class="btn btn-secondary mr-5" th:href="@{/user/connection}">Back</a>
+			  			<button class="btn btn-primary ml-5" type="submit">Update</button>
+			  		</div>
+				</form>
+			</div>
+		</div>	
+	</body>
+</html>

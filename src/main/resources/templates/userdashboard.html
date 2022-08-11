@@ -5,15 +5,21 @@
 <head>
 <meta charset="UTF-8">
 <title>User Dashboard</title>
+<style>
+
+
+</style>
 </head>
 <body>
-	<section class="text-center mt-1">
-		<h1>Welcome, <span th:text="${user.firstName+' '+user.lastName}"></span></h1>
-		<h3 > <a class="btn btn-primary" th:href="@{/user/connection}">Connection details</a> </h3>
-		<br /><a class="btn btn-primary" th:href="@{/user/ServiceProviderList}">Show Service Provider List</a>
-	<br />
-	<br />
-	<br /> <a class="btn btn-primary" th:href="@{/user/saveServiceProvider}">Add Service Provider</a>
+	
+	<section class="text-center m-1 jumbotron back">
+		<h1 class="m-3">Welcome, <span th:text="${user.firstName+' '+user.lastName}"></span></h1><br>
+		
+		<h3 class="m-2"> <a class="btn btn-primary" th:href="@{/user/connection}">Connection details</a> </h3><br>
+		
+		<a class="btn btn-primary mb-3" th:href="@{/user/ServiceProviderList}">Show Service Provider List</a><br>
+		
+		<a class="btn btn-primary mt-3" th:href="@{/user/saveServiceProvider}">Add Service Provider</a>
 	</section>
 </body>
 </html>

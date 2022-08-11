@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" >
+	<head>
+	<meta charset="UTF-8">
+	<title>Connection Details</title>
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
+	<link href="/css/connection.css" rel="stylesheet" media="all">
+	</head>
+	<body>
+		
+		<nav th:include="base3 :: navb3"></nav>
+		<div class="alert alert-success alert-dismissible fade show register-box text-center" role="alert"
+			style="position: absolute; margin-left: auto; margin-right: auto;
+			left: 0; right: 0; text-align: center; width: 15%;"
+			th:if="${param.success}"> Saved Successfully !!
+			<button type="button" class="close" data-dismiss="alert" aria-label="Close">
+    			<span aria-hidden="true">&times;</span>
+  			</button>
+		</div>
+		
+		<div class="alert alert-warning alert-dismissible fade show register-box text-center" role="alert"
+			style="position: absolute; margin-left: auto; margin-right: auto;
+			left: 0; right: 0; text-align: center; width: 15%;"
+			th:if="${param.delete}"> Deleted Successfully !!
+			<button type="button" class="close" data-dismiss="alert" aria-label="Close">
+    			<span aria-hidden="true">&times;</span>
+  			</button>
+		</div>
+		
+		<div class="container d-flex justify-content-center mt-5">
+			
+			
+			<table class="table table-bordered table-striped table-hover">			
+				<thead class="thead-dark">
+					<tr>
+						<th>ID</th>
+						<th>Type</th>
+						<th>Demand User Id</th>
+						<th>State</th>
+						<th>District</th>
+						<th>Block</th>
+						<th>Gram Panchayats</th>
+						<th>Date</th>
+						<th>Status</th>
+						<th colspan="2" class="text-center">Action</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr th:each="ld : ${listDemand}">
+						<td th:text="${ld.demandId}"/>
+						<td th:switch="${ld.demandType}"> 
+							<span th:case="1">Single Customer</span>
+    						<span th:case="2">Bulk Customer (Manual)</span>
+    						<span th:case="3">Bulk Customer (Excel)</span>
+    						<span th:case="*">null</span>
+						</td>
+						<td th:text="${ld.user.userId}"/>
+						<td th:text="${ld.state.stateName}"/>
+						<td th:text="${ld.district.districtName}"/>
+						<td th:text="${ld.block.blockName}"/>
+						<td th:text="${ld.gp.gpName}"/>
+						<td th:text="${#dates.format(ld.demandDate, 'dd-MMM-yyyy')}"></td>
+						<td th:switch="${ld.status}">
+							<span th:case="1">Draft</span>
+    						<span th:case="2">Submitted</span>
+    						<span th:case="*">null</span>
+						</td>
+						<td><a class=" btn btn-info" th:href="@{'connection/edit/' + ${ld.demandId}}">Edit</a></td>
+						<td>
+						
+						
+							<button type="button" class="btn btn-danger" data-toggle="modal" data-target="#delete">Delete</button>
+							
+							<div class="modal fade" id="delete" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+							  <div class="modal-dialog modal-dialog-centered">
+							    <div class="modal-content">
+							      <div class="modal-header">
+							        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+							          <span aria-hidden="true">&times;</span>
+							        </button>
+							      </div>
+							      <div class="modal-body">
+							        Do you want to delete connection?
+							      </div>
+							      <div class="modal-footer">
+							        <a class=" btn btn-danger" th:href="@{'connection/delete/' + ${ld.demandId}}">Delete</a>
+							        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+							        
+							      </div>
+							    </div>
+							  </div>
+							</div>
+						</td>
+					 </tr>
+				</tbody>
+			</table>	
+			
+	
+		</div>
+		<div class="text-center">
+		<a class="btn btn-primary" th:href="@{connection/addconnection}">Add new Connection</a>
+		</div>
+	</body>
+</html>
