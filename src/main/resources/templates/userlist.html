@@ -31,6 +31,11 @@ img {
 	height: 50px;
 	width: 60px;
 }
+table {
+  display: block;
+  height: 500px;
+  overflow-y: auto;
+}
 </style>
 </head>
 <body>
@@ -38,18 +43,18 @@ img {
 	<div class="container-fluid">
 		<div class="row">
 			<div class="col-md-12">
-				<h1 class="text-center text-light mt-3">ALL USER LIST</h1>
+				<h1 class="text-center text-light mt-3"><i class="fa-solid fa-people-group"></i>&nbsp;ALL USER LIST</h1>
 				<hr class="bg-light">
 				<div th:if="${param.success}">
 					<div class="alert alert-success text-center mt-3">You have
 						Successfully Updated</div>
 				</div>
-				<a th:href="@{/logout}" class="btn btn-success float-right mb-2">Logout</a>
+				<a th:href="@{/logout}" class="btn btn-success float-right mb-2"><i class="fa-solid fa-right-from-bracket"></i>&nbsp;Logout</a>
 
 				<a th:href="@{/export_excel}" class="btn btn-success mb-2 mr-1"><i class="fa-solid fa-file-export"></i>&nbsp;Export-Data-User-Excel</a>
 
 				<marquee class="text-lg text-uppercase text-light">
-					<strong><b>-----------------: The List of User
+					<strong><b>-----------------:&nbsp;&nbsp;<i class="fa-solid fa-people-group"></i>&nbsp; The List of User
 							:-----------------</b></strong>
 				</marquee>
 
@@ -121,7 +126,7 @@ img {
 						</table>
 					</div>
 					<p>
-						<a class="btn btn-info" th:href="@{/signup}">Add New User</a> <a
+						<a class="btn btn-info" th:href="@{/signup}"><i class="fa-solid fa-user-plus"></i>&nbsp;Add New User</a> <a
 							class="btn btn-info float-right" th:href="@{/upload_excel}"><i class="fa-solid fa-file-import"></i>&nbsp;Upload
 							Bulk Data</a>
 
@@ -131,7 +136,7 @@ img {
 				</div>
 
 				<marquee class="text-lg text-uppercase text-light">
-					<strong><b>-----------------: The List of User
+					<strong><b>-----------------:&nbsp;&nbsp;<i class="fa-solid fa-people-group"></i>&nbsp;&nbsp; The List of User
 							:-----------------</b></strong>
 				</marquee>
 
