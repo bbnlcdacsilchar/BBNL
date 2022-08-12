@@ -27,12 +27,14 @@
 			      <li class="nav-item">
 			        <a class="nav-link text-white ml-3" th:href="@{/about}">About</a>
 			      </li>
-			      <li class="nav-item">
-			        <a class="nav-link text-white ml-3" href="#" th:href="@{/signup}"><i class="fa-solid fa-user-plus"></i>&nbsp;Signup</a>
-			      </li>
-			      <li class="nav-item">
-			        <a class="nav-link text-white ml-3" href="#" th:href="@{/signin}"><i class="fa-solid fa-right-to-bracket"></i>&nbsp;Login</a>
-			      </li>
+	          <li class="nav-item" th:switch="${#authentication}? ${#authorization.expression('isAuthenticated()')} : ${false}">
+              <a th:case="${true}" class="nav-link text-white ml-3" href="/user"><i class="fa-solid fa-user"></i>&nbsp;<span sec:authentication="principal.username"></span></a>
+              <a th:case="${false}" class="nav-link text-white ml-3" href="#" th:href="@{/signup}"><i class="fa-solid fa-user-plus"></i>&nbsp;SignUp</a>
+            </li>
+            <li class="nav-item" th:switch="${#authentication}? ${#authorization.expression('isAuthenticated()')} : ${false}">
+              <a th:case="${true}" class="nav-link text-white ml-3" href="/logout"><i class="fa-solid fa-right-from-bracket"></i>&nbsp;Logout</a>
+              <a th:case="${false}" class="nav-link text-white ml-3" href="#" th:href="@{/signin}"><i class="fa-solid fa-right-to-bracket"></i>&nbsp;Login</a>
+            </li>
 			    </ul>
 			  </div>
 		</nav>

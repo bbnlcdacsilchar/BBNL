@@ -4,13 +4,13 @@ function validateForm() {
     clearErrors();
 
     var fname = document.forms['signupform']["firstName"].value.trim();
-    if (fname.length < 5) {
+    if (fname === "") {
         seterror("fname", "*Invalid First Name.");
         returnval = false;
     }
 
     var lname = document.forms['signupform']["lastName"].value.trim();
-    if (lname.length < 5) {
+    if (lname === "") {
         seterror("lname", "*Invalid Last Name.");
         returnval = false;
     }
