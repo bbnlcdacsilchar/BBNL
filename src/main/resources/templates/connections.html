@@ -20,7 +20,7 @@
 		
 		<div class="alert alert-warning alert-dismissible fade show d-flex justify-content-center" role="alert"
 			style="position: absolute;"
-			th:if="${param.delete}"> Deleted Successfully !!
+			th:if="${param.delete}">Deleted Successfully !!
 			<button type="button" class="close" data-dismiss="alert" aria-label="Close">
     			<span aria-hidden="true">&times;</span>
   			</button>
@@ -81,7 +81,7 @@
 							        </button>
 							      </div>
 							      <div class="modal-body">
-							        Do you want to delete connection?
+							        <b>Do you want to delete connection?</b>
 							      </div>
 							      <div class="modal-footer">
 							        <a class=" btn btn-danger" th:href="@{'connection/delete/' + ${ld.demandId}}">Delete</a>
