@@ -115,13 +115,10 @@ public class UserController {
 		return "userSignup";
 	}
 	
-	@GetMapping("/addconnection")
-	public String newConn() {
-		return "newConnection";
+	@GetMapping("/user/listuser")
+	public String listAll() {
+		return "allList";
 	}
-	
-	
-	
 	
 	/*
 	 * @RequestMapping(value = "/saveuser", method = RequestMethod.POST) public
